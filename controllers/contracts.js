@@ -1,7 +1,9 @@
 /*jshint esversion: 9 */
 
+const contractService = require('../services/contracts');
+
 const getAllContracts = (req, res, next) => {
-    let contracts = {};
+    const contracts = contractService.getAllContracts();
 
     // REST API Best practice:
     // We return object with list as an attribute to be able to add some other properties later
