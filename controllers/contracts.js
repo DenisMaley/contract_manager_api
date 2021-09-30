@@ -15,6 +15,16 @@ const getAllContracts = (req, res, next) => {
     return res.json({contracts: contracts});
 };
 
+const getContract = (req, res, next) => {
+    const contract = contractService.getContractById(req.params.id);
+    if(!contract) {
+        // REST API Best practice: return proper status codes
+        return res.status(404).json({message: "Contract not found."});
+    }
+    return res.json({contract: contract});
+};
+
 module.exports = {
-    getAllContracts
+    getAllContracts,
+    getContract
 };

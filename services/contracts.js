@@ -13,6 +13,12 @@ const getAllContracts = () => {
     return data.contracts;
 };
 
+const getContractById = (id) => {
+    // dummy function for now
+    return data.contracts.filter( contract =>  contract.id == id)[0];
+};
+
 module.exports = {
-    getAllContracts
+    getAllContracts,
+    getContractById
 };

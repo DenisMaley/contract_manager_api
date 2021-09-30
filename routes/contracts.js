@@ -11,4 +11,6 @@ const contractController = require('../controllers/contracts');
 // The most common methods include GET, POST, PUT, and DELETE.
 router.get('/contracts', contractController.getAllContracts);
 
+router.get('/contracts/:id', contractController.getContract);
+
 module.exports = router; // export to use in server.js
