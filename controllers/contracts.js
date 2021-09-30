@@ -1,9 +1,13 @@
 /*jshint esversion: 9 */
 
 const contractService = require('../services/contracts');
+const sortService = require('./sort');
 
 const getAllContracts = (req, res, next) => {
-    const contracts = contractService.getAllContracts();
+    let contracts = contractService.getAllContracts();
+    // REST API Best practice: Allow filtering, sorting, and pagination
+    // TODO: filtering and pagination
+    contracts = sortService.sortObjects(contracts, req);
 
     // REST API Best practice:
     // We return object with list as an attribute to be able to add some other properties later
