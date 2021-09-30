@@ -12,5 +12,6 @@ const contractController = require('../controllers/contracts');
 router.get('/contracts', contractController.getAllContracts);
 
 router.get('/contracts/:id', contractController.getContract);
+router.put('/contracts/:id', contractController.editContract);
 
 module.exports = router; // export to use in server.js

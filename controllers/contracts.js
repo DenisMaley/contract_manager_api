@@ -24,7 +24,32 @@ const getContract = (req, res, next) => {
     return res.json({contract: contract});
 };
 
+const editContract = (req, res, next) => {
+    const contract = contractService.getContractById(req.params.id);
+    if(!contract) {
+        return res.status(404).json({message: "Contract not found."});
+    }
+    const edited_contract = {
+      ...contract,
+      ...req.body,
+    };
+
+    let contracts = contractService.getAllContracts();
+    contracts = contracts.map((item) => {
+        if (item.id === edited_contract.id) {
+            return edited_contract;
+        } else {
+            return item;
+        }
+    });
+    contractService.save(contracts);
+    //All this logic should be in the service if we'd use a real DB
+
+    return res.json({contract: edited_contract});
+};
+
 module.exports = {
     getAllContracts,
-    getContract
+    getContract,
+    editContract
 };
