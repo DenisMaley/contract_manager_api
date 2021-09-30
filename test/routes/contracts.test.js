@@ -66,4 +66,33 @@ describe("testing-routes", () => {
             ]
         });
     });
+    // Testing sorting functionality
+    it("GET /contracts - success", async () => {
+        const { body } = await request(app).get("/contracts?sortBy=currency_code&orderBy=asc"); //use the request function that we can use the app
+        // save the response to body variable
+        expect(body).toEqual({
+            contracts: [
+                {
+                    id: 4,
+                    total: 1004,
+                    currency_code: "AUD"
+                },
+                {
+                    id: 3,
+                    total: 1003,
+                    currency_code: "CAD"
+                },
+                {
+                    id: 1,
+                    total: 1001,
+                    currency_code: "EUR"
+                },
+                {
+                    id: 2,
+                    total: 1002,
+                    currency_code: "USD"
+                }
+            ]
+        });
+    });
 });
