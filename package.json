@@ -19,7 +19,8 @@
   "homepage": "https://github.com/DenisMaley/contract_manager_api#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^6.0.8"
+    "mongoose": "^6.0.8",
+    "swagger-ui-express": "^4.1.6"
   },
   "devDependencies": {
     "jest": "^26.0.1",

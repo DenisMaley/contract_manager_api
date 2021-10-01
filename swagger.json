@@ -1,0 +1,151 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Contract Manager API",
+    "description": "Contract Manager API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Contracts",
+      "description": "API for contracts in the system"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/contracts": {
+      "get": {
+        "tags": [
+          "Contracts"
+        ],
+        "summary": "Get all contracts in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Contracts"
+            }
+          }
+        }
+      }
+    },
+    "/contracts/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of contract that we want to find",
+          "type": "integer"
+        }
+      ],
+      "put": {
+        "summary": "Update contract with given ID",
+        "tags": [
+          "Contracts"
+        ],
+        "parameters": [
+          {
+            "name": "contract",
+            "in": "body",
+            "description": "Contract with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/updateContract"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Contract is updated",
+            "schema": {
+              "$ref": "#/definitions/Contract"
+            }
+          },
+          "404": {
+            "description": "Contract not found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Get contract with given ID",
+        "tags": [
+          "Contracts"
+        ],
+        "responses": {
+          "200": {
+            "description": "Contract is returned",
+            "schema": {
+              "$ref": "#/definitions/Contract"
+            }
+          },
+          "404": {
+            "description": "Contract not found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Contract": {
+      "required": [
+        "currency_code"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "uniqueItems": true
+        },
+        "total": {
+          "type": "integer"
+        },
+        "currency_code": {
+          "type": "string"
+        }
+      }
+    },
+    "updateContract": {
+      "required": [
+        "currency_code"
+      ],
+      "properties": {
+        "total": {
+          "type": "integer"
+        },
+        "currency_code": {
+          "type": "string"
+        }
+      }
+    },
+    "Contracts": {
+      "properties": {
+        "contracts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Contract"
+          }
+        }
+      }
+    },
+    "Error": {
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

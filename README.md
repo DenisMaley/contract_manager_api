@@ -23,7 +23,9 @@ Launch the server
 $ npm start
 ```
 
-Then after it's up you can use the endpoints:
+Then after it's up you can view the [Swagger docs][swagger] where you can try out the endpoints.
+
+Or use curl directly:
 
 List:
 ```shell script
@@ -56,8 +58,8 @@ $ npm test
 
 * Add Filtering and pagination
 * Add CI/CD
-* Add Swagger documentation
 * Add Unit and more integration tests
 * Use MongoDB i.o. Mock
 
 [nodejs]: https://nodejs.org/en/download/
+[swagger]: http://localhost:3000/api-docs/
