@@ -1,5 +1,5 @@
 const path = require('path');
-const file_path = path.resolve(__dirname, '../db_mock.json');
+const file_path = path.resolve(__dirname, '../db.json');
 
 module.exports = {
     file_path
