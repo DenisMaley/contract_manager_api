@@ -1,34 +1,9 @@
 const express = require("express"); // import express
-const routes = require('../../routes/contracts'); //import file we are testing
+const routes = require("../../routes/contracts"); //import file we are testing
 const request = require("supertest"); // supertest is a framework that allows to easily test web apis
 
-
-jest.mock("../../db_mock.json", () => {
-            contracts: [
-                {
-                    id: 1,
-                    total: 1001,
-                    currency_code: "EUR"
-                },
-                {
-                    id: 2,
-                    total: 1002,
-                    currency_code: "USD"
-                },
-                {
-                    id: 3,
-                    total: 1003,
-                    currency_code: "CAD"
-                },
-                {
-                    id: 4,
-                    total: 1004,
-                    currency_code: "AUD"
-                }
-            ]
-        }
-); //callback function with mock data
-
+// We need to set test db, since the main one is mutable.
+jest.mock("../../services/file_db");
 const app = express();
 
 // REST API Best practice: Accept and respond with JSON
